@@ -5,6 +5,9 @@ title: A Simple Exercise on FX Attribution
 author: Martin Rinaldi
 logo: UBC.jpeg
 
+baseurl: "/FX" # your repository name
+
+
 # Increase font size for better readability
 html_theme_options:
   font_size: 22px
@@ -67,9 +70,3 @@ latex:
 # Add a bibtex file so that we can create citations
 bibtex_bibfiles:
   - references.bib
-
-# Theme settings
-theme:
-  name: "sphinx_book_theme"
-  palette: blindcolor
-  sidebar_footer_text: "A Simple Exercise on FX Attribution"
