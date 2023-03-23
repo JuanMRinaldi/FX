@@ -1,0 +1,925 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>FX attribution exercise &#8212; A Simple Exercise on FX Attribution</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/FX_Attribution_Allison';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/UBC.jpeg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/UBC.jpeg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to the FX Attribution Exercise
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../FX_Attribution_Allison.html">FX attribution exercise</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../REFERENCES.html">REFERENCES</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/content/FX_Attribution_Allison.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>FX attribution exercise</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">FX attribution exercise</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#what-do-we-mean-by-fx-attribution">What do we mean by FX attribution?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#some-references-for-you-to-explore">Some references for you to explore</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div style="padding: 15px; border: 10px solid #2196f3; margin: auto; max-width: 1500px;  margin-bottom: 20px; border-radius: 4px; color: #000000; background-color: #e1f5fe; text-align: center;">
+<section id="fx-attribution-exercise">
+<h1>FX attribution exercise<a class="headerlink" href="#fx-attribution-exercise" title="Permalink to this headline">#</a></h1>
+</div><div style="padding: 15px; border: 10px solid #2196f3; margin: auto; max-width: 1500px;  margin-bottom: 20px; border-radius: 4px; color: #000000; background-color: #e1f5fe; text-align: justify;">
+</section>
+<section id="what-do-we-mean-by-fx-attribution">
+<h1>What do we mean by FX attribution?<a class="headerlink" href="#what-do-we-mean-by-fx-attribution" title="Permalink to this headline">#</a></h1>
+<p>The objective of performance attribution, as stated by <code class="docutils literal notranslate"><span class="pre">{cite}`menchero2000optimized`</span></code>, is to:</p>
+<p>A. Explain portfolio performance relative to a benchmark.</p>
+<p>B. Identify the sources of excess return.</p>
+<p>C. Relate them to active decisions by the portfolio manager.</p>
+<p>In this Jupyter Book we will try to deepen our understanding of B) <strong>the sources of excess return in a portfolio</strong>. In the case of FX or multicurrency attribution, we are trying to isolate the impact of currency fluctuations on the performance of a portfolio.</p>
+<p>For simplicity, in the course of this simple exercise we will not consider excess return, but rather the performance of a portfolio of stocks denominated in two different currencies. This needs to be extended to include the benchmark, which is usually a market index.</p>
+</div><div style="padding: 15px; border: 10px solid #2196f3; margin: auto; max-width: 1500px;  margin-bottom: 20px; border-radius: 4px; color: #000000; background-color: #e1f5fe; text-align: justify;">
+</section>
+<section id="some-references-for-you-to-explore">
+<h1>Some references for you to explore<a class="headerlink" href="#some-references-for-you-to-explore" title="Permalink to this headline">#</a></h1>
+<p>Risk-Adjusted Attribution
+Campisi (2000) listed the characteristics of a good performance attribution system as follows:</p>
+<ul class="simple">
+<li><p>It is consistent with the investment process and the manager’s decision- making process.</p></li>
+<li><p>It uses a benchmark that reflects the manager’s strategic (long-term) asset allocation.</p></li>
+<li><p>It measures the effect of the manager’s tactical (short-term) allocation shifts.</p></li>
+<li><p>It adjusts attribution of return for systematic risk(s).</p></li>
+</ul>
+<p>Rather satisfactorily, Fisher and D’Alessandro (2019) took attribution full circle and tied risk-adjusted attribution back to the original “Components of Investment Performance” (Fama 1972).</p>
+<p>See Bacon (2019) for a nice literature review of performance attribution (including multiperiod and multicurrency).</p>
+<p>With no further ado, let’s get started!</p>
+</div><p><img alt="A 2 currencies portfolio" src="content/MultiCCYPort.png" /></p>
+<div style="padding: 15px; border: 10px solid #2196f3; margin: auto; max-width: 1500px;  margin-bottom: 20px; border-radius: 4px; color: #000000; background-color: #e1f5fe; text-align: justify;">
+<p>We want to understand the impact of the FX exposure on the portfolio dynamics. We invest in both American and Canadian stocks, so we are exposed to variations in the CADUSD pair. The figure above shows the total dollar value of the portfolio, as well as the breakdown of the Canadian and American exposures.</p>
+<p>To run an FX attribution analysis, we will examine the effects of both currency fluctuations and the performance of the stocks in the portfolio.</p>
+<p>The Canadian dollar’s appreciation has a <strong>direct impact</strong> on the value of the Canadian exposure of the portfolio. As the CAD strengthens against the USD, the value of the Canadian stocks held in the portfolio increases when measured in USD. This is because the investor’s holdings in Canadian stocks now have a higher value in U.S. dollars due to the stronger Canadian dollar. On the other hand, the American exposure in the portfolio should remain unaffected by the fluctuations in the CAD/USD exchange rate, as the value of the American stocks is already measured in U.S. dollars.</p>
+<p>To understand our FX exposure, we can break down portfolio returns into two components:</p>
+<ul class="simple">
+<li><p><strong>Pure FX effect</strong>: This represents the change in value of the Canadian exposure due solely to the appreciation of the CAD against the USD. This can be calculated by isolating the change in the CAD/USD exchange rate from the change in the value of the Canadian stocks.</p></li>
+<li><p><strong>Stock performance effect</strong>: This represents the change in the value of the Canadian and American exposure due to the performance of the stocks themselves, independent of the exchange rate fluctuations (recall our discussion on stock valuations, dividend yields, etc.).</p></li>
+</ul>
+<p>By separating the pure FX effect and the stock performance effect, we can identify the contribution of each factor to the portfolio’s overall performance and provide insights for future investment decisions.</p>
+</div><div style="padding: 15px; border: 10px solid #2196f3; margin: auto; max-width: 1500px;  margin-bottom: 20px; border-radius: 4px; color: #000000; background-color: #e1f5fe; text-align: justify;">
+<p>Start by calculating the pure FX effect, which measures the impact of changes in exchange rates on the total return of the portfolio. To calculate the pure FX effect for the Canadian portfolio, we use the formula:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Canadian Pure FX Effect} = \left(\frac{\text{Canadian exposure (USD)}}{\text{CADUSD}_{t-1}} - \frac{\text{Canadian exposure (USD)}_{t-1}}{\text{CADUSD}_{t-1}} \right)\times \text{CADUSD}_t \times \frac{1}{\text{Total portfolio value (USD)}_t}
+\]</div>
+<p>Similarly, for the American portfolio:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{American Pure FX Effect} = \frac{[(\text{American exposure (USD)}_{t} \times \text{CADUSD}_{t-1}) - (\text{American exposure (USD)}_{t-1} \times \text{CADUSD}_{t-1})] \times \text{CADUSD}_{t}}{\text{Total portfolio value (USD)}_t}
+\]</div>
+<p>Next, we calculate the pure stock effect for the American and Canadian portfolios, which measures the impact of changes in stock prices on the total return of the portfolio. We use the formula:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Stock Effect} = \frac{P_t - P_{t-1}}{P_{t-1}}
+\]</div>
+<p>where P is the price of the stock. We calculate this for both American and Canadian exposure. Note that we could expand one step further and consider what we talked about (dividend yield, etc.) as follows:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Stock Effect} = \frac{P^*_t - P_{t-1} + D_t}{P_{t-1}}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(P^*_t\)</span> is the ex-dividend stock price at time <span class="math notranslate nohighlight">\(t\)</span>, <span class="math notranslate nohighlight">\(P_{t-1}\)</span> is the stock price at the previous time period, and <span class="math notranslate nohighlight">\(D_t\)</span> is the dividend payment at time <span class="math notranslate nohighlight">\(t\)</span>.</p>
+<p>To calculate the total stock effect, we simply add the American and Canadian stock effects together:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Total Stock Effect} = \text{American Stock Effect} + \text{Canadian Stock Effect}
+\]</div>
+<p>To calculate the total FX effect, we use the formulas for the Canadian and American pure FX effect calculated earlier:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Total FX Effect} = \text{Canadian Pure FX Effect} + \text{American Pure FX Effect}
+\]</div>
+<p>Finally, we calculate the total return using the formulas for the total stock effect and total FX effect:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Total Return} = \text{Total Stock Effect} + \text{Total FX Effect}
+\]</div>
+</div><div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="n">FuncFormatter</span>
+<span class="kn">import</span> <span class="nn">matplotlib.dates</span> <span class="k">as</span> <span class="nn">mdates</span>
+<span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="n">MaxNLocator</span>
+
+<span class="c1"># Replace this with your Google Sheets API key</span>
+<span class="n">api_key</span> <span class="o">=</span> <span class="s2">&quot;AIzaSyAid6kntl2_8pPpYnDQvG1CmrH8fDQwxsg&quot;</span>
+
+<span class="c1"># Replace this with your Google Sheet ID</span>
+<span class="n">sheet_id</span> <span class="o">=</span> <span class="s2">&quot;1NrXdbrLjCDz6pI4o-9xstZ5sS3k_JMALS8ts7dXlBCw&quot;</span>
+
+<span class="c1"># Replace this with the name of the sheet/tab you want to access</span>
+<span class="n">sheet_name</span> <span class="o">=</span> <span class="s2">&quot;Charts&quot;</span>
+
+<span class="c1"># Access the Google Sheet</span>
+<span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://sheets.googleapis.com/v4/spreadsheets/</span><span class="si">{</span><span class="n">sheet_id</span><span class="si">}</span><span class="s2">/values/</span><span class="si">{</span><span class="n">sheet_name</span><span class="si">}</span><span class="s2">!A6:K?key=</span><span class="si">{</span><span class="n">api_key</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;values&quot;</span><span class="p">]</span>
+
+<span class="c1"># Remove the empty cells from headers</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="n">numeric_columns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;CADUSD&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;CAD Spot &quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Total portfolio value (USD)&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Total portfolio value (CAD)&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;American exposure (USD)&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Canadian exposure (USD)&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;EVOLUTION OF IMPLIED AMERICAN WEIGHT&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Return of CAD/USD&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;American returns&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Canadian returns&quot;</span>
+<span class="p">]</span>
+
+<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">numeric_columns</span><span class="p">:</span>
+    <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;[\$,]&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;coerce&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the pure FX effect for the Canadian portfolio</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Canadian Pure FX Effect&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Canadian exposure (USD)&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;CADUSD&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Canadian exposure (USD)&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;CADUSD&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;CADUSD&quot;</span><span class="p">])</span><span class="o">/</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Total portfolio value (USD)&quot;</span><span class="p">]</span>
+
+<span class="c1"># Calculate the pure FX effect for the American portfolio</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;American Pure FX Effect&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;American exposure (USD)&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;CADUSD&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;American exposure (USD)&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;CADUSD&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;CADUSD&quot;</span><span class="p">])</span><span class="o">/</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Total portfolio value (USD)&quot;</span><span class="p">]</span>
+
+<span class="c1"># Calculate the pure stock effect for American exposure</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;American Stock Effect&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;American exposure (USD)&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span>
+
+<span class="c1"># Calculate the pure stock effect for Canadian exposure</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Canadian Stock Effect&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Canadian exposure (USD)&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span>
+
+<span class="c1"># Calculate the total stock effect</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Total Stock Effect&quot;</span><span class="p">]</span> <span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;American Stock Effect&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Canadian Stock Effect&quot;</span><span class="p">]</span> 
+
+<span class="c1"># Calculate the total FX effect</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Total FX Effect&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Canadian Pure FX Effect&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;American Pure FX Effect&quot;</span><span class="p">]</span>
+
+<span class="c1"># Calculate the total return</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Total Return&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Total Stock Effect&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Total FX Effect&quot;</span><span class="p">]</span>
+
+<span class="c1"># Set the date column as the index</span>
+<span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Date&quot;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set plotting style to scientific</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;science&quot;</span><span class="p">)</span>
+
+<span class="c1"># Enable LaTeX formatting</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="n">usetex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s2">&quot;font&quot;</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s2">&quot;serif&quot;</span><span class="p">)</span>
+<span class="c1"># Bigger font size in titles and axis labels</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s2">&quot;axes&quot;</span><span class="p">,</span> <span class="n">titlesize</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s2">&quot;axes&quot;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="c1"># Bigger font size in legends</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s2">&quot;legend&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="c1"># Bigger font size in ticks</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s2">&quot;xtick&quot;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s2">&quot;ytick&quot;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="c1"># Bold font weight in titles and axis labels</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s2">&quot;axes&quot;</span><span class="p">,</span> <span class="n">titleweight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s2">&quot;axes&quot;</span><span class="p">,</span> <span class="n">labelweight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">)</span>
+<span class="c1"># Bold font weight in legends</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s2">&quot;legend&quot;</span><span class="p">,</span> <span class="n">title_fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s2">&quot;legend&quot;</span><span class="p">,</span> <span class="n">labelspacing</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+<span class="c1"># Color black for text</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+
+<span class="c1"># Function to format y axis as a percentage</span>
+<span class="k">def</span> <span class="nf">percentage_formatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="mi">100</span> <span class="o">*</span> <span class="n">x</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">\%&quot;</span>
+
+<span class="c1"># Function to format dates</span>
+<span class="k">def</span> <span class="nf">format_date</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">mdates</span><span class="o">.</span><span class="n">num2date</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%b-%y&quot;</span><span class="p">)</span>
+
+<span class="c1">######################################################################################################</span>
+<span class="c1"># 1. A line plot showing the evolution of CADUSD, American exposure, and Canadian exposure over time.#</span>
+<span class="c1">######################################################################################################</span>
+
+<span class="c1"># Resample the data to weekly frequency</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Date&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Date&quot;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">weekly_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">&quot;W&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+
+<span class="c1">#Line type dashed for CADUSD</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">weekly_df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">weekly_df</span><span class="p">[</span><span class="s2">&quot;CADUSD&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;CADUSD&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.85</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Date&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;CADUSD&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">)</span>
+
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">weekly_df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">weekly_df</span><span class="p">[</span><span class="s2">&quot;American exposure (USD)&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;American exposure (USD)&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">weekly_df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">weekly_df</span><span class="p">[</span><span class="s2">&quot;Canadian exposure (USD)&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Canadian exposure (USD)&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Exposure (USD)&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">)</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">FuncFormatter</span><span class="p">(</span><span class="n">format_date</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;CADUSD and Exposure Over Time (Weekly)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/57e230c467070353fb852291a1cb2a00e930a38742fe5ba782b23276f953f39e.png" src="../_images/57e230c467070353fb852291a1cb2a00e930a38742fe5ba782b23276f953f39e.png" />
+</div>
+</div>
+<div style="padding: 15px; border: 10px solid #2196f3; margin: auto; max-width: 1500px;  margin-bottom: 20px; border-radius: 4px; color: #000000; background-color: #e1f5fe; text-align: justify;">
+<p>We would expect a stronger performance from the Canadian stocks during a period of CAD appreciation, as the value of the Canadian stocks increases when measured in USD. We can see that this is indeed the case, as the Canadian stocks outperformed the American stocks during the period of CAD appreciation between Feb 2020 and June 2021-i.e., the Canadian exposure grew faster than the American exposure during this period.</p>
+</div><div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Max 3 decimal places</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">float_format</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{:.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span>
+<span class="n">df</span><span class="p">[[</span><span class="s2">&quot;American returns&quot;</span><span class="p">,</span> <span class="s2">&quot;Canadian returns&quot;</span><span class="p">,</span> <span class="s2">&quot;Canadian Pure FX Effect&quot;</span><span class="p">,</span> <span class="s2">&quot;American Pure FX Effect&quot;</span><span class="p">,</span> <span class="s2">&quot;Total Stock Effect&quot;</span><span class="p">,</span> <span class="s2">&quot;Total FX Effect&quot;</span><span class="p">,</span> <span class="s2">&quot;Total Return&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>American returns</th>
+      <th>Canadian returns</th>
+      <th>Canadian Pure FX Effect</th>
+      <th>American Pure FX Effect</th>
+      <th>Total Stock Effect</th>
+      <th>Total FX Effect</th>
+      <th>Total Return</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>783.000</td>
+      <td>783.000</td>
+      <td>782.000</td>
+      <td>782.000</td>
+      <td>782.000</td>
+      <td>782.000</td>
+      <td>782.000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>0.000</td>
+      <td>0.001</td>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>0.001</td>
+      <td>0.000</td>
+      <td>0.001</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>0.018</td>
+      <td>0.018</td>
+      <td>0.008</td>
+      <td>0.005</td>
+      <td>0.033</td>
+      <td>0.013</td>
+      <td>0.045</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>-0.120</td>
+      <td>-0.140</td>
+      <td>-0.070</td>
+      <td>-0.038</td>
+      <td>-0.226</td>
+      <td>-0.092</td>
+      <td>-0.318</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>-0.010</td>
+      <td>-0.010</td>
+      <td>-0.003</td>
+      <td>-0.002</td>
+      <td>-0.013</td>
+      <td>-0.005</td>
+      <td>-0.017</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>0.001</td>
+      <td>0.000</td>
+      <td>0.003</td>
+      <td>0.001</td>
+      <td>0.003</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>0.010</td>
+      <td>0.010</td>
+      <td>0.004</td>
+      <td>0.003</td>
+      <td>0.017</td>
+      <td>0.007</td>
+      <td>0.023</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>0.110</td>
+      <td>0.110</td>
+      <td>0.042</td>
+      <td>0.027</td>
+      <td>0.183</td>
+      <td>0.056</td>
+      <td>0.239</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div style="padding: 15px; border: 10px solid #2196f3; margin: auto; max-width: 1500px;  margin-bottom: 20px; border-radius: 4px; color: #000000; background-color: #e1f5fe; text-align: justify;">
+<p>Overall, the distributions of American and Canadian returns look fairly similar. This is related with our discussion on CIP deviations. Suppose that the Canadian stocks were on average much more rewarding than the American stocks. Then, we could borrow in USD and invest in Canadian stocks in eternum and arbitrage the difference away. This would lead to a convergence of the two distributions-at least in the long run, for the first moment.</p>
+<p>Interestingly, the distributions of the Canadian and American pure FX effects look different. For instance, Canadian Pure FX effect is more volatile than the American. I do not want to spoil the surprise, so I will leave it to you to think about why this is the case and we will discuss it in the next meeting.</p>
+</div><div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Plot Total Return</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Total Return&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Total Return&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Date&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Total Return&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Total FX Effect&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Total FX Effect&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1"># Legend </span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">FuncFormatter</span><span class="p">(</span><span class="n">format_date</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Total Return Over Time&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/bd892da366b272ad3126d1e7605f55a0c1aecc213df3a93d097d4cf0ff3ae8de.png" src="../_images/bd892da366b272ad3126d1e7605f55a0c1aecc213df3a93d097d4cf0ff3ae8de.png" />
+</div>
+</div>
+<div style="padding: 15px; border: 10px solid #2196f3; margin: auto; max-width: 1500px;  margin-bottom: 20px; border-radius: 4px; color: #000000; background-color: #e1f5fe; text-align: justify;">
+<p>An stylized fact we can take from the figure above is that, in the overall portfolio, the stock performance effect is much more important than the FX effect. This is not surprising. Why? I will leave it to you to think about it and we will discuss it in the next meeting.</p>
+</div><div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Plot Cumulative return of the portfolio broken down by stock and FX effects</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Total Stock Effect&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">cumprod</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Total Stock Effect&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Total FX Effect&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">cumprod</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Total FX Effect&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1">#Total return in green and thicker line</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Total Return&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">cumprod</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Total Return&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Date&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\%&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">FuncFormatter</span><span class="p">(</span><span class="n">format_date</span><span class="p">))</span>
+<span class="c1"># Add a shadow between Feb 2020 and June 2021 with legend label &quot;U.S. aggressive fiscal response to Covid weakened the USD&quot; </span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="s2">&quot;2020-02-01&quot;</span><span class="p">,</span> <span class="s2">&quot;2021-06-01&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;U.S. aggressive fiscal response to Covid weakened the USD&quot;</span><span class="p">)</span>
+<span class="c1">#Legend </span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">)</span>
+<span class="c1"># Add reference of 1.0 on the y axis</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Cumulative Returns Breakdown&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/5b5510fa97918e3bf0d13e210727192158636df3fa314c165f514965dd8ac975.png" src="../_images/5b5510fa97918e3bf0d13e210727192158636df3fa314c165f514965dd8ac975.png" />
+</div>
+</div>
+<div style="padding: 15px; border: 10px solid #2196f3; margin: auto; max-width: 1500px;  margin-bottom: 20px; border-radius: 4px; color: #000000; background-color: #e1f5fe; text-align: justify;">
+<p>Note how during the aggressive fiscal response to Covid from the Federal Reserve in the U.S. pushed the dollar down and we had a Canadian dollar appreciation. This is a good example of how the FX effect can be important in the overall portfolio performance. However, the stock performance effect was much more important. We should think about an argument to explain why is it worth it to pay attention to this ‘’second order’’ effect. I will leave it to you to think about it and we will discuss it in the next meeting.</p>
+</div><div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Aggregate returns by month</span>
+<span class="n">returns_decomposition</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;Total FX Effect&quot;</span><span class="p">,</span> <span class="s2">&quot;American Stock Effect&quot;</span><span class="p">,</span> <span class="s2">&quot;Canadian Stock Effect&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">returns_decomposition</span> <span class="o">=</span> <span class="n">returns_decomposition</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">&quot;M&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">prod</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Add a &quot;Date&quot; column equal to the index </span>
+<span class="n">returns_decomposition</span><span class="p">[</span><span class="s2">&quot;Date&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">returns_decomposition</span><span class="o">.</span><span class="n">index</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+<span class="n">returns_decomposition</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;Date&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Total FX Effect&quot;</span><span class="p">,</span> <span class="s2">&quot;American Stock Effect&quot;</span><span class="p">,</span> <span class="s2">&quot;Canadian Stock Effect&quot;</span><span class="p">],</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="p">,</span> <span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Month&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Aggregate return&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">FuncFormatter</span><span class="p">(</span><span class="n">percentage_formatter</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">returns_decomposition</span><span class="p">[</span><span class="s2">&quot;Date&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%b-%y&quot;</span><span class="p">),</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+<span class="c1">#Maxmium number of ticks on the x axis is 12</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">MaxNLocator</span><span class="p">(</span><span class="mi">12</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Monthly Returns Breakdown: FX \&amp; Stock Effects&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/dd357d5dd4d08c07221cc43ea7eff5642f083d0518af1039629dfc429081cea0.png" src="../_images/dd357d5dd4d08c07221cc43ea7eff5642f083d0518af1039629dfc429081cea0.png" />
+</div>
+</div>
+<div style="padding: 15px; border: 10px solid #2196f3; margin: auto; max-width: 1500px;  margin-bottom: 20px; border-radius: 4px; color: #000000; background-color: #e1f5fe; text-align: justify;">
+<p>The above is merely a representation of what I have in mind to complete the FX attribution exercise. The numbers are not correct, as I am aggregating returns at the monthly level using daily returns and applying a geometric average without considering an extra drift correction. Try to replicate the above exercise more precisely and:</p>
+<ol class="arabic simple">
+<li><p>Breakdown the FX effect into the part that is spanned by the American and Canadian portfolios.</p></li>
+<li><p>Once you have 1), try to break down the exposure by sectors.</p></li>
+<li><p>Think about how to incorporate the benchmark to this exercise.</p></li>
+</ol>
+</div><div style="padding: 15px; border: 10px solid #2196f3; margin: auto; max-width: 1500px;  margin-bottom: 20px; border-radius: 4px; color: #000000; background-color: #e1f5fe; text-align: justify;">
+</section>
+<section id="references">
+<h1>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h1>
+<div class="docutils container" id="id1">
+<dl class="citation">
+<dt class="label" id="id2"><span class="brackets">Bac19</span></dt>
+<dd><p>Carl R Bacon. <em>Performance Attribution: History and Progress</em>. CFA Institute Research Foundation, 2019.</p>
+</dd>
+<dt class="label" id="id5"><span class="brackets">Cam00</span></dt>
+<dd><p>Stephen Campisi. Primer on fixed income performance attribution. <em>Journal of Performance Measurement</em>, 4(4):14–25, 2000.</p>
+</dd>
+<dt class="label" id="id3"><span class="brackets">Fam72</span></dt>
+<dd><p>Eugene F Fama. Components of investment performance. <em>The Journal of finance</em>, 27(3):551–567, 1972.</p>
+</dd>
+<dt class="label" id="id6"><span class="brackets">FDAlessandro19</span></dt>
+<dd><p>Jeffrey D Fisher and Joseph D’Alessandro. Risk-adjusted attribution analysis of real estate portfolios. <em>The Journal of Portfolio Management</em>, 45(7):80–94, 2019.</p>
+</dd>
+<dt class="label" id="id4"><span class="brackets">Men00</span></dt>
+<dd><p>Jose Menchero. An optimized approach to linking attribution effects over time. <em>Journal of Performance Measurement</em>, 5(1):36–42, 2000.</p>
+</dd>
+</dl>
+</div>
+</div>  
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">FX attribution exercise</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#what-do-we-mean-by-fx-attribution">What do we mean by FX attribution?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#some-references-for-you-to-explore">Some references for you to explore</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Martin Rinaldi
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
