@@ -36,6 +36,17 @@
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/vendor/fontawesome/6.1.2/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
@@ -52,6 +63,23 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/documentation_options.js"></script>
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/design-tabs.js"></script>
+    <script src="_static/jquery-3.5.1.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/copybutton_funcs.js"></script>
+    <script src="_static/sphinx-thebe.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore-1.13.1.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
+    <script src="_static/scripts/bootstrap.js"></script>
+    <script src="_static/scripts/pydata-sphinx-theme.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -62,7 +90,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'FX_Attribution_Allison';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'FX';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="REFERENCES" href="REFERENCES.html" />
@@ -217,7 +245,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/FX_Attribution_Allison.ipynb" target="_blank"
+      <li><a href="_sources/FX.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -340,7 +368,7 @@ document.write(`
 </section>
 <section id="what-do-we-mean-by-fx-attribution">
 <h1>What do we mean by FX attribution?<a class="headerlink" href="#what-do-we-mean-by-fx-attribution" title="Permalink to this headline">#</a></h1>
-<p>The objective of performance attribution, as stated by <strong>Menchero (2000)</strong> <span id="id1">[<a class="reference internal" href="content/FX_Attribution_Allison.html#id4" title="Jose Menchero. An optimized approach to linking attribution effects over time. Journal of Performance Measurement, 5(1):36–42, 2000.">Men00</a>]</span>, is to:</p>
+<p>The objective of performance attribution, as stated by <strong>Menchero (2000)</strong> <span id="id1">[<a class="reference internal" href="content/FX.html#id4" title="Jose Menchero. An optimized approach to linking attribution effects over time. Journal of Performance Measurement, 5(1):36–42, 2000.">Men00</a>]</span>, is to:</p>
 <p>A. Explain portfolio performance relative to a benchmark.</p>
 <p>B. Identify the sources of excess return.</p>
 <p>C. Relate them to active decisions by the portfolio manager.</p>
@@ -351,15 +379,15 @@ document.write(`
 <section id="some-references-for-you-to-explore">
 <h1>Some references for you to explore<a class="headerlink" href="#some-references-for-you-to-explore" title="Permalink to this headline">#</a></h1>
 <p>Risk-Adjusted Attribution
-<strong>Campisi (2000)</strong> <span id="id2">[<a class="reference internal" href="content/FX_Attribution_Allison.html#id5" title="Stephen Campisi. Primer on fixed income performance attribution. Journal of Performance Measurement, 4(4):14–25, 2000.">Cam00</a>]</span> listed the characteristics of a good performance attribution system as follows:</p>
+<strong>Campisi (2000)</strong> <span id="id2">[<a class="reference internal" href="content/FX.html#id5" title="Stephen Campisi. Primer on fixed income performance attribution. Journal of Performance Measurement, 4(4):14–25, 2000.">Cam00</a>]</span> listed the characteristics of a good performance attribution system as follows:</p>
 <ul class="simple">
 <li><p>It is consistent with the investment process and the manager’s decision- making process.</p></li>
 <li><p>It uses a benchmark that reflects the manager’s strategic (long-term) asset allocation.</p></li>
 <li><p>It measures the effect of the manager’s tactical (short-term) allocation shifts.</p></li>
 <li><p>It adjusts attribution of return for systematic risk(s).</p></li>
 </ul>
-<p>Rather satisfactorily, <strong>Fisher and D’Alessandro (2019)</strong> <span id="id3">[<a class="reference internal" href="content/FX_Attribution_Allison.html#id6" title="Jeffrey D Fisher and Joseph D’Alessandro. Risk-adjusted attribution analysis of real estate portfolios. The Journal of Portfolio Management, 45(7):80–94, 2019.">FDAlessandro19</a>]</span> took attribution full circle and tied risk-adjusted attribution back to the original “Components of Investment Performance” (<strong>Fama, 1972</strong> <span id="id4">[<a class="reference internal" href="content/FX_Attribution_Allison.html#id3" title="Eugene F Fama. Components of investment performance. The Journal of finance, 27(3):551–567, 1972.">Fam72</a>]</span>).</p>
-<p>See <strong>Bacon (2019)</strong> <span id="id5">[<a class="reference internal" href="content/FX_Attribution_Allison.html#id2" title="Carl R Bacon. Performance Attribution: History and Progress. CFA Institute Research Foundation, 2019.">Bac19</a>]</span> for a nice literature review of performance attribution (including multiperiod and multicurrency).</p>
+<p>Rather satisfactorily, <strong>Fisher and D’Alessandro (2019)</strong> <span id="id3">[<a class="reference internal" href="content/FX.html#id6" title="Jeffrey D Fisher and Joseph D’Alessandro. Risk-adjusted attribution analysis of real estate portfolios. The Journal of Portfolio Management, 45(7):80–94, 2019.">FDAlessandro19</a>]</span> took attribution full circle and tied risk-adjusted attribution back to the original “Components of Investment Performance” (<strong>Fama, 1972</strong> <span id="id4">[<a class="reference internal" href="content/FX.html#id3" title="Eugene F Fama. Components of investment performance. The Journal of finance, 27(3):551–567, 1972.">Fam72</a>]</span>).</p>
+<p>See <strong>Bacon (2019)</strong> <span id="id5">[<a class="reference internal" href="content/FX.html#id2" title="Carl R Bacon. Performance Attribution: History and Progress. CFA Institute Research Foundation, 2019.">Bac19</a>]</span> for a nice literature review of performance attribution (including multiperiod and multicurrency).</p>
 <p>With no further ado, let’s get started!</p>
 </div><p><img alt="A 2 currencies portfolio" src="_images/MultiCCYPort.png" /></p>
 <div style="padding: 15px; border: 10px solid #2196f3; margin: auto; max-width: 1500px;  margin-bottom: 20px; border-radius: 4px; color: #000000; background-color: #e1f5fe; text-align: justify;">

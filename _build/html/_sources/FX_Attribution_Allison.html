@@ -36,6 +36,17 @@
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/vendor/fontawesome/6.1.2/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
@@ -52,6 +63,23 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/documentation_options.js"></script>
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/jquery-3.5.1.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/copybutton_funcs.js"></script>
+    <script src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore-1.13.1.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
+    <script src="../_static/scripts/bootstrap.js"></script>
+    <script src="../_static/scripts/pydata-sphinx-theme.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -62,7 +90,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'content/FX_Attribution_Allison';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_sources/FX_Attribution_Allison';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -156,7 +184,7 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../FX_Attribution_Allison.html">FX attribution exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FX.html">FX attribution exercise</a></li>
 
 
 
@@ -215,7 +243,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/content/FX_Attribution_Allison.ipynb" target="_blank"
+      <li><a href="../_sources/_sources/FX_Attribution_Allison.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -310,7 +338,15 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">FX attribution exercise</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#what-do-we-mean-by-fx-attribution">What do we mean by FX attribution?</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#some-references-for-you-to-explore">Some references for you to explore</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio-returns-breakdown-fx-vs-stock-performance">Portfolio returns breakdown: FX vs stock performance</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#breakdown-computation">Breakdown computation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#an-example-of-the-importance-of-understanding-fx-exposure-post-covid-cad-appreciation-episode">An example of the importance of understanding FX exposure: post-Covid CAD appreciation episode</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-of-fx-effects">Distribution of FX effects</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fx-has-a-second-order-effect-on-portfolio-returns">FX has a “second order” effect on portfolio returns</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-on-the-cad-appreciation-episode">More on the CAD appreciation episode</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pushing-the-analysis-further">Pushing the analysis further</a></li>
+</ul>
+</li>
 </ul>
 
             </nav>
@@ -330,7 +366,7 @@ document.write(`
 </section>
 <section id="what-do-we-mean-by-fx-attribution">
 <h1>What do we mean by FX attribution?<a class="headerlink" href="#what-do-we-mean-by-fx-attribution" title="Permalink to this headline">#</a></h1>
-<p>The objective of performance attribution, as stated by <code class="docutils literal notranslate"><span class="pre">{cite}`menchero2000optimized`</span></code>, is to:</p>
+<p>The objective of performance attribution, as stated by <strong>Menchero (2000)</strong> <span id="id1">[<a class="reference internal" href="../content/FX.html#id4" title="Jose Menchero. An optimized approach to linking attribution effects over time. Journal of Performance Measurement, 5(1):36–42, 2000.">Men00</a>]</span>, is to:</p>
 <p>A. Explain portfolio performance relative to a benchmark.</p>
 <p>B. Identify the sources of excess return.</p>
 <p>C. Relate them to active decisions by the portfolio manager.</p>
@@ -341,18 +377,21 @@ document.write(`
 <section id="some-references-for-you-to-explore">
 <h1>Some references for you to explore<a class="headerlink" href="#some-references-for-you-to-explore" title="Permalink to this headline">#</a></h1>
 <p>Risk-Adjusted Attribution
-Campisi (2000) listed the characteristics of a good performance attribution system as follows:</p>
+<strong>Campisi (2000)</strong> <span id="id2">[<a class="reference internal" href="../content/FX.html#id5" title="Stephen Campisi. Primer on fixed income performance attribution. Journal of Performance Measurement, 4(4):14–25, 2000.">Cam00</a>]</span> listed the characteristics of a good performance attribution system as follows:</p>
 <ul class="simple">
 <li><p>It is consistent with the investment process and the manager’s decision- making process.</p></li>
 <li><p>It uses a benchmark that reflects the manager’s strategic (long-term) asset allocation.</p></li>
 <li><p>It measures the effect of the manager’s tactical (short-term) allocation shifts.</p></li>
 <li><p>It adjusts attribution of return for systematic risk(s).</p></li>
 </ul>
-<p>Rather satisfactorily, Fisher and D’Alessandro (2019) took attribution full circle and tied risk-adjusted attribution back to the original “Components of Investment Performance” (Fama 1972).</p>
-<p>See Bacon (2019) for a nice literature review of performance attribution (including multiperiod and multicurrency).</p>
+<p>Rather satisfactorily, <strong>Fisher and D’Alessandro (2019)</strong> <span id="id3">[<a class="reference internal" href="../content/FX.html#id6" title="Jeffrey D Fisher and Joseph D’Alessandro. Risk-adjusted attribution analysis of real estate portfolios. The Journal of Portfolio Management, 45(7):80–94, 2019.">FDAlessandro19</a>]</span> took attribution full circle and tied risk-adjusted attribution back to the original “Components of Investment Performance” (<strong>Fama, 1972</strong> <span id="id4">[<a class="reference internal" href="../content/FX.html#id3" title="Eugene F Fama. Components of investment performance. The Journal of finance, 27(3):551–567, 1972.">Fam72</a>]</span>).</p>
+<p>See <strong>Bacon (2019)</strong> <span id="id5">[<a class="reference internal" href="../content/FX.html#id2" title="Carl R Bacon. Performance Attribution: History and Progress. CFA Institute Research Foundation, 2019.">Bac19</a>]</span> for a nice literature review of performance attribution (including multiperiod and multicurrency).</p>
 <p>With no further ado, let’s get started!</p>
-</div><p><img alt="A 2 currencies portfolio" src="content/MultiCCYPort.png" /></p>
+</div><p><img alt="A 2 currencies portfolio" src="_sources/MultiCCYPort.png" /></p>
 <div style="padding: 15px; border: 10px solid #2196f3; margin: auto; max-width: 1500px;  margin-bottom: 20px; border-radius: 4px; color: #000000; background-color: #e1f5fe; text-align: justify;">
+</section>
+<section id="portfolio-returns-breakdown-fx-vs-stock-performance">
+<h1>Portfolio returns breakdown: FX vs stock performance<a class="headerlink" href="#portfolio-returns-breakdown-fx-vs-stock-performance" title="Permalink to this headline">#</a></h1>
 <p>We want to understand the impact of the FX exposure on the portfolio dynamics. We invest in both American and Canadian stocks, so we are exposed to variations in the CADUSD pair. The figure above shows the total dollar value of the portfolio, as well as the breakdown of the Canadian and American exposures.</p>
 <p>To run an FX attribution analysis, we will examine the effects of both currency fluctuations and the performance of the stocks in the portfolio.</p>
 <p>The Canadian dollar’s appreciation has a <strong>direct impact</strong> on the value of the Canadian exposure of the portfolio. As the CAD strengthens against the USD, the value of the Canadian stocks held in the portfolio increases when measured in USD. This is because the investor’s holdings in Canadian stocks now have a higher value in U.S. dollars due to the stronger Canadian dollar. On the other hand, the American exposure in the portfolio should remain unaffected by the fluctuations in the CAD/USD exchange rate, as the value of the American stocks is already measured in U.S. dollars.</p>
@@ -363,6 +402,8 @@ Campisi (2000) listed the characteristics of a good performance attribution syst
 </ul>
 <p>By separating the pure FX effect and the stock performance effect, we can identify the contribution of each factor to the portfolio’s overall performance and provide insights for future investment decisions.</p>
 </div><div style="padding: 15px; border: 10px solid #2196f3; margin: auto; max-width: 1500px;  margin-bottom: 20px; border-radius: 4px; color: #000000; background-color: #e1f5fe; text-align: justify;">
+<section id="breakdown-computation">
+<h2>Breakdown computation<a class="headerlink" href="#breakdown-computation" title="Permalink to this headline">#</a></h2>
 <p>Start by calculating the pure FX effect, which measures the impact of changes in exchange rates on the total return of the portfolio. To calculate the pure FX effect for the Canadian portfolio, we use the formula:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -562,6 +603,9 @@ Campisi (2000) listed the characteristics of a good performance attribution syst
 </div>
 </div>
 <div style="padding: 15px; border: 10px solid #2196f3; margin: auto; max-width: 1500px;  margin-bottom: 20px; border-radius: 4px; color: #000000; background-color: #e1f5fe; text-align: justify;">
+</section>
+<section id="an-example-of-the-importance-of-understanding-fx-exposure-post-covid-cad-appreciation-episode">
+<h2>An example of the importance of understanding FX exposure: post-Covid CAD appreciation episode<a class="headerlink" href="#an-example-of-the-importance-of-understanding-fx-exposure-post-covid-cad-appreciation-episode" title="Permalink to this headline">#</a></h2>
 <p>We would expect a stronger performance from the Canadian stocks during a period of CAD appreciation, as the value of the Canadian stocks increases when measured in USD. We can see that this is indeed the case, as the Canadian stocks outperformed the American stocks during the period of CAD appreciation between Feb 2020 and June 2021-i.e., the Canadian exposure grew faster than the American exposure during this period.</p>
 </div><div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -691,6 +735,9 @@ Campisi (2000) listed the characteristics of a good performance attribution syst
 </div></div></div>
 </div>
 <div style="padding: 15px; border: 10px solid #2196f3; margin: auto; max-width: 1500px;  margin-bottom: 20px; border-radius: 4px; color: #000000; background-color: #e1f5fe; text-align: justify;">
+</section>
+<section id="distribution-of-fx-effects">
+<h2>Distribution of FX effects<a class="headerlink" href="#distribution-of-fx-effects" title="Permalink to this headline">#</a></h2>
 <p>Overall, the distributions of American and Canadian returns look fairly similar. This is related with our discussion on CIP deviations. Suppose that the Canadian stocks were on average much more rewarding than the American stocks. Then, we could borrow in USD and invest in Canadian stocks in eternum and arbitrage the difference away. This would lead to a convergence of the two distributions-at least in the long run, for the first moment.</p>
 <p>Interestingly, the distributions of the Canadian and American pure FX effects look different. For instance, Canadian Pure FX effect is more volatile than the American. I do not want to spoil the surprise, so I will leave it to you to think about why this is the case and we will discuss it in the next meeting.</p>
 </div><div class="cell tag_hide-input docutils container">
@@ -720,6 +767,9 @@ Campisi (2000) listed the characteristics of a good performance attribution syst
 </div>
 </div>
 <div style="padding: 15px; border: 10px solid #2196f3; margin: auto; max-width: 1500px;  margin-bottom: 20px; border-radius: 4px; color: #000000; background-color: #e1f5fe; text-align: justify;">
+</section>
+<section id="fx-has-a-second-order-effect-on-portfolio-returns">
+<h2>FX has a “second order” effect on portfolio returns<a class="headerlink" href="#fx-has-a-second-order-effect-on-portfolio-returns" title="Permalink to this headline">#</a></h2>
 <p>An stylized fact we can take from the figure above is that, in the overall portfolio, the stock performance effect is much more important than the FX effect. This is not surprising. Why? I will leave it to you to think about it and we will discuss it in the next meeting.</p>
 </div><div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -754,6 +804,9 @@ Campisi (2000) listed the characteristics of a good performance attribution syst
 </div>
 </div>
 <div style="padding: 15px; border: 10px solid #2196f3; margin: auto; max-width: 1500px;  margin-bottom: 20px; border-radius: 4px; color: #000000; background-color: #e1f5fe; text-align: justify;">
+</section>
+<section id="more-on-the-cad-appreciation-episode">
+<h2>More on the CAD appreciation episode<a class="headerlink" href="#more-on-the-cad-appreciation-episode" title="Permalink to this headline">#</a></h2>
 <p>Note how during the aggressive fiscal response to Covid from the Federal Reserve in the U.S. pushed the dollar down and we had a Canadian dollar appreciation. This is a good example of how the FX effect can be important in the overall portfolio performance. However, the stock performance effect was much more important. We should think about an argument to explain why is it worth it to pay attention to this ‘’second order’’ effect. I will leave it to you to think about it and we will discuss it in the next meeting.</p>
 </div><div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -789,36 +842,16 @@ Campisi (2000) listed the characteristics of a good performance attribution syst
 </div>
 </div>
 <div style="padding: 15px; border: 10px solid #2196f3; margin: auto; max-width: 1500px;  margin-bottom: 20px; border-radius: 4px; color: #000000; background-color: #e1f5fe; text-align: justify;">
+</section>
+<section id="pushing-the-analysis-further">
+<h2>Pushing the analysis further<a class="headerlink" href="#pushing-the-analysis-further" title="Permalink to this headline">#</a></h2>
 <p>The above is merely a representation of what I have in mind to complete the FX attribution exercise. The numbers are not correct, as I am aggregating returns at the monthly level using daily returns and applying a geometric average without considering an extra drift correction. Try to replicate the above exercise more precisely and:</p>
 <ol class="arabic simple">
 <li><p>Breakdown the FX effect into the part that is spanned by the American and Canadian portfolios.</p></li>
 <li><p>Once you have 1), try to break down the exposure by sectors.</p></li>
-<li><p>Think about how to incorporate the benchmark to this exercise.</p></li>
+<li><p>Think about how to incorporate the benchmark to this exercise. This is critical. When it comes to attribution, we need to be able to compare the performance of the portfolio with the performance of the benchmark and express everything in terms of excess returns.</p></li>
 </ol>
-</div><div style="padding: 15px; border: 10px solid #2196f3; margin: auto; max-width: 1500px;  margin-bottom: 20px; border-radius: 4px; color: #000000; background-color: #e1f5fe; text-align: justify;">
-</section>
-<section id="references">
-<h1>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h1>
-<div class="docutils container" id="id1">
-<dl class="citation">
-<dt class="label" id="id2"><span class="brackets">Bac19</span></dt>
-<dd><p>Carl R Bacon. <em>Performance Attribution: History and Progress</em>. CFA Institute Research Foundation, 2019.</p>
-</dd>
-<dt class="label" id="id5"><span class="brackets">Cam00</span></dt>
-<dd><p>Stephen Campisi. Primer on fixed income performance attribution. <em>Journal of Performance Measurement</em>, 4(4):14–25, 2000.</p>
-</dd>
-<dt class="label" id="id3"><span class="brackets">Fam72</span></dt>
-<dd><p>Eugene F Fama. Components of investment performance. <em>The Journal of finance</em>, 27(3):551–567, 1972.</p>
-</dd>
-<dt class="label" id="id6"><span class="brackets">FDAlessandro19</span></dt>
-<dd><p>Jeffrey D Fisher and Joseph D’Alessandro. Risk-adjusted attribution analysis of real estate portfolios. <em>The Journal of Portfolio Management</em>, 45(7):80–94, 2019.</p>
-</dd>
-<dt class="label" id="id4"><span class="brackets">Men00</span></dt>
-<dd><p>Jose Menchero. An optimized approach to linking attribution effects over time. <em>Journal of Performance Measurement</em>, 5(1):36–42, 2000.</p>
-</dd>
-</dl>
-</div>
-</div>  
+</div></section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -834,7 +867,7 @@ Campisi (2000) listed the characteristics of a good performance attribution syst
         },
         kernelOptions: {
             name: "python3",
-            path: "./content"
+            path: "./_sources"
         },
         predefinedOutput: true
     }
@@ -867,7 +900,15 @@ Campisi (2000) listed the characteristics of a good performance attribution syst
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">FX attribution exercise</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#what-do-we-mean-by-fx-attribution">What do we mean by FX attribution?</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#some-references-for-you-to-explore">Some references for you to explore</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio-returns-breakdown-fx-vs-stock-performance">Portfolio returns breakdown: FX vs stock performance</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#breakdown-computation">Breakdown computation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#an-example-of-the-importance-of-understanding-fx-exposure-post-covid-cad-appreciation-episode">An example of the importance of understanding FX exposure: post-Covid CAD appreciation episode</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-of-fx-effects">Distribution of FX effects</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fx-has-a-second-order-effect-on-portfolio-returns">FX has a “second order” effect on portfolio returns</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-on-the-cad-appreciation-episode">More on the CAD appreciation episode</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pushing-the-analysis-further">Pushing the analysis further</a></li>
+</ul>
+</li>
 </ul>
 
   </nav></div>
