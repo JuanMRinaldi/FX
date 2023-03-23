@@ -1,0 +1,75 @@
+# Book settings
+# Learn more at https://jupyterbook.org/customize/config.html
+
+title: A Simple Exercise on FX Attribution
+author: Martin Rinaldi
+logo: UBC.jpeg
+
+# Increase font size for better readability
+html_theme_options:
+  font_size: 22px
+
+# Force re-execution of notebooks on each build.
+# See https://jupyterbook.org/content/execute.html
+execute:
+  execute_notebooks: off
+
+latex:
+  latex_documents:
+    targetname: book.tex
+  # Use custom LaTeX settings for better looking equations
+  preamble: |
+    \usepackage{amsmath}
+    \usepackage{amsfonts}
+    \usepackage{amssymb}
+    \usepackage{bm}
+    \usepackage{graphicx}
+    \usepackage{color}
+    \usepackage{cancel}
+    \usepackage{tikz}
+    \usepackage{pgfplots}
+    \usetikzlibrary{positioning, calc, shapes, arrows, arrows.meta, fit, backgrounds}
+    \pgfplotsset{compat=1.16}
+    \definecolor{darkgreen}{rgb}{0, 0.5, 0}
+    \definecolor{myorange}{RGB}{255,165,0}
+    \DeclareMathOperator*{\argmax}{arg\,max}
+    \DeclareMathOperator*{\argmin}{arg\,min}
+    \DeclareMathOperator{\E}{\mathbb{E}}
+    \DeclareMathOperator{\V}{\mathbb{V}}
+    \newcommand{\iid}{\stackrel{\text{iid}}{\sim}}
+    \newcommand{\ind}{\stackrel{\text{ind}}{\sim}}
+    \newcommand{\prob}{\text{Pr}}
+    \newcommand{\var}{\text{Var}}
+    \newcommand{\cov}{\text{Cov}}
+    \newcommand{\corr}{\text{Corr}}
+    \newcommand{\N}{\mathcal{N}}
+    \newcommand{\B}{\mathcal{B}}
+    \newcommand{\U}{\mathcal{U}}
+    \newcommand{\X}{\mathcal{X}}
+    \newcommand{\Y}{\mathcal{Y}}
+    \newcommand{\D}{\mathcal{D}}
+    \newcommand{\Z}{\mathcal{Z}}
+    \newcommand{\R}{\mathbb{R}}
+    \newcommand{\eqdef}{\stackrel{\text{def}}{=}}
+    \newcommand{\given}{\,|\,}
+    \newcommand{\tp}{^{\mathsf{T}}}
+    \newcommand{\inv}{^{-1}}
+    \newcommand{\bs}{\boldsymbol}
+    \newcommand{\diag}{\text{diag}}
+    \newcommand{\tr}{\text{tr}}
+    \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+    \newcommand{\abs}[1]{\left\lvert#1\right\rvert}
+    \newcommand{\paren}[1]{\left(#1\right)}
+    \newcommand{\braces}[1]{\left\{#1\right\}}
+    \newcommand{\brackets}[1]{\left[#1\right]}
+    \newcommand{\ceil}[1]{\left\lceil#1
+
+# Add a bibtex file so that we can create citations
+bibtex_bibfiles:
+  - references.bib
+  
+# Theme settings
+theme:
+  name: "sphinx_book_theme"
+  palette: blindcolor
+  sidebar_footer_text: "A Simple Exercise on FX Attribution"
